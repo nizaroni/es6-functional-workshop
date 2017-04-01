@@ -21,26 +21,33 @@ function check(data) {
 	);
 }
 
-function response(
-  {
-    foo = 0,
-    bar = 4,
-    baz,
-    bam: {
-      qux = 0,
-      qam = 14
-    } = {}
-  } = {}
-) {
+var defaults = {
+	foo: 0,
+	bar: 4,
+	bam: {
+		qux: 0,
+		qam: 14
+	}
+};
+
+function response({
+	foo = defaults.foo,
+	bar = defaults.bar,
+	baz,
+	bam: {
+		qux = defaults.bam.qux,
+		qam = defaults.bam.qam
+	} = {}
+} = {}) {
 
 	check({
-    foo,
-    bar,
-    baz,
-    bam: {
-      qux,
-      qam
-    }
+		foo,
+		bar,
+		baz,
+		bam: {
+			qux,
+			qam
+		}
 	});
 
 }

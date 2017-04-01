@@ -69,3 +69,33 @@ function formatCurrency (strings, ...values) {
   }
   return str
 }
+
+
+// spread works on any iterable
+var str = 'Pizza'
+console.log(...str)
+
+
+// generators
+function *pizzaGen (pizza) {
+  console.log('pizza start')
+  yield { crust: pizza.crust }
+  yield { sauce: pizza.sauce }
+  for (let key of Object.keys(pizza)) {
+    if (key === 'crust' || key === 'sauce') {
+      continue
+    }
+    yield { [key]: pizza[key] }
+  }
+  console.log('pizza end')
+}
+
+var pizzaIt = pizzaGen(pizza)
+
+console.log('gen loop start')
+
+for (let thing of pizzaIt) {
+  console.log(thing)
+}
+
+console.log('gen loop end')

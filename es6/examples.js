@@ -29,3 +29,20 @@ var toppings = {
 var pizza = Object.assign({}, settings, toppings)
 
 console.log(pizza)
+
+
+// destructure returns the structure
+var a = [1, 2, 3, 4, 5]
+var c = [b] = a
+
+console.log({ b, c })
+
+
+// destructure objects can repeat properties
+var {
+  bacon: baconA,
+  bacon: baconB
+}
+= pizza
+
+console.log({ baconA, baconB })
